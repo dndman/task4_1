@@ -1,0 +1,18 @@
+--- Hardware ---
+CPU:  Intel(R) Pentium(R) CPU B970 @ 2.30GHz
+RAM: 3,8G
+Motherboard: ASUSTeK Computer Inc. K54HR
+System Serial Number: C6N0AS350771242     
+--- System ---
+OS Distribution: Linux Mint 18 Sarah
+Kernel version: 4.4.0-21-generic
+Installation date: 25 Sep 2016
+Hostname: xlswalker-book
+Uptime: up 2 days, 8 hours, 24 minutes
+Processes running: 234
+Users logged in: 3
+--- Network ---
+docker0: 172.17.0.1/16
+enp5s0: -
+lo: 127.0.0.1/8
+wlp3s0: 192.168.1.133/24

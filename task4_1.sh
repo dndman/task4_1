@@ -22,6 +22,10 @@ getsysteminfo ()
 
 
   SERIAL=`dmidecode -s system-serial-number`
+
+   if [ -z "$SERIAL" ]; then
+    SERIAL="Unknown"
+   fi
   echo "System Serial Number: $SERIAL"
   echo "--- System ---"
   . /etc/lsb-release
