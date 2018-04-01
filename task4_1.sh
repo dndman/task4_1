@@ -32,11 +32,11 @@ getsysteminfo ()
   echo "OS Distribution: $DISTRIB_DESCRIPTION"
   KERNEL=`uname -r`
   echo "Kernel version: $KERNEL"
-  DATE=`ls -clt / | tail -n 1 | awk '{ print $7, $6, $8 }'`
+  DATE=`ls -clt / | tail -n 1 | awk '{ print $6, $7, $8 }'`
   echo "Installation date: $DATE"
   HOSTNAME=`hostname`
   echo "Hostname: $HOSTNAME"
-  UPTIME=`uptime -p`
+  UPTIME=`uptime -p |awk -F"up " '{print $2}'`
   echo "Uptime: $UPTIME"
   PROCESSES=`ps auxf | wc -l`
   echo "Processes running: $PROCESSES"
@@ -46,12 +46,21 @@ getsysteminfo ()
   IFACES=`ifconfig -a |grep -v -E "^    "|awk '{print $1}'|grep -v -E "^$"`
    for IFACE in $IFACES; do
 #    ip addr show $IFACE|grep " inet "
-  ADDR=`ip addr show $IFACE|grep " inet "`
+  ADDR=`ip addr show $IFACE|grep " inet " |awk '{print $2}'`
      if [ -z "$ADDR" ]; then
       echo "${IFACE}: -"
      else
+     SOME=""
+      for ALTER in $ADDR; do
+       if [ -z "$SOME" ]; then
+        SOME=$ALTER
+       else
+       SOME="${SOME}, ${ALTER}"
+       fi
+       done
 ##echo hell
-     echo ${IFACE}: `echo $ADDR|awk '{print $2}'`
+     echo ${IFACE}: $SOME
+
      fi
 #    echo $IFACE
      done
