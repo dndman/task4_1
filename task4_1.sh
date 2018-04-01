@@ -3,7 +3,7 @@ getsysteminfo ()
 {
   echo "--- Hardware ---"
   CPU=`cat /proc/cpuinfo | grep 'model name' | uniq |awk -F':' '{print $2}' `
-  echo "CPU: $CPU"
+  echo "CPU:$CPU"
   MEMORY=`free -h|grep Mem|awk '{print $2}'`
   echo "RAM: $MEMORY"
 
